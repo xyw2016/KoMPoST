@@ -161,9 +161,9 @@ void ComputeBackground(bool IsFirstPass, EnergyMomentumTensorMap *TIn,
 
     // COMMANDLINE OUTPUT -- PROGRESS MONITOR //
     if (omp_get_thread_num() == 0) {
-      std::cerr << "#PROGRESS IS " << int(100*( (xEND - xSTART + 1) * (yS - ySTART) )/((double) (xEND - xSTART + 1) * (yEND - ySTART + 1) /
-                       omp_get_max_threads() )) << "\%"
-                << std::endl;
+      //std::cerr << "#PROGRESS IS " << int(100*( (xEND - xSTART + 1) * (yS - ySTART) )/((double) (xEND - xSTART + 1) * (yEND - ySTART + 1) /
+      //                 omp_get_max_threads() )) << "\%"
+      //          << std::endl;
     }
 
     for (int xS = xSTART; xS <= xEND; xS++) {
@@ -381,9 +381,9 @@ void ComputePerturbations(EnergyMomentumTensorMap *TIn,
 
     // COMMANDLINE OUTPUT -- PROGRESS MONITOR //
     if (omp_get_thread_num() == 0) {
-      std::cerr << "#PROGRESS IS " << int(100*( (xEND - xSTART + 1) * (yS - ySTART) )/((double) (xEND - xSTART + 1) * (yEND - ySTART + 1) /
-                       omp_get_max_threads() )) << "\%"
-                << std::endl;
+      //std::cerr << "#PROGRESS IS " << int(100*( (xEND - xSTART + 1) * (yS - ySTART) )/((double) (xEND - xSTART + 1) * (yEND - ySTART + 1) /
+      //                 omp_get_max_threads() )) << "\%"
+      //          << std::endl;
     }
 
     for (int xS = xSTART; xS <= xEND; xS++) {
@@ -740,7 +740,7 @@ void Run(EnergyMomentumTensorMap *TIn, EnergyMomentumTensorMap *TOutBG,
     } else {
       SigmaBG = EvolutionTime / sqrt(2.);
     }
-
+    std::cout <<" Sigma: "<< SigmaBG <<" "<< TOutFull->tau<<" "<< TIn->tau<<std::endl;
     // Evolve the backround, compute the scaling variable, K etc
     ComputeBackground(IsFirstPass, TIn, TOutBG, Scaler, SigmaBG,
                       EVOLUTION_MODE);

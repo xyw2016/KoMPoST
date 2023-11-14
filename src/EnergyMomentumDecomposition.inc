@@ -121,7 +121,8 @@ void get_energy_flow_from_Tmunu(double Tmunu_raised[4][4], double tau_in_GeV, do
 	gsl_matrix_view tmp_matrix = gsl_matrix_view_array(tmpdata, 4, 4);
 	gsl_matrix * matrix = gsl_matrix_alloc (4, 4);
 	gsl_matrix * matrix_orig = gsl_matrix_alloc (4, 4);
-	*matrix=tmp_matrix.matrix;
+	//*matrix=tmp_matrix.matrix; //Memory leak wxy
+	gsl_matrix_memcpy(matrix,&tmp_matrix.matrix);
 	gsl_matrix_memcpy(matrix_orig,&tmp_matrix.matrix);
 
 	

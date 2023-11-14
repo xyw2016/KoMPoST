@@ -69,10 +69,19 @@ int main(int argc, char **argv) {
   
   // LOAD INITIAL ENERGY MOMENTUM TENSOR //
   EnergyMomentumTensorMapLoad(Tmunu_In, InputFile);
+  
+  
+  int NT = 10;
+  double DT = (tOut - tIn)/NT;
 
+  for(int it = 0; it < NT; it ++)
+  {
+  double tau = tIn + (it+1)*DT;
+
+  KoMPoSTParameters::Sigma=0.1/(tau-tIn);
   // ALLOCATE FINAL AND BACKGROUND ENERGY-MOMENTUM TENSOR //
-  EnergyMomentumTensorMap *Tmunu_OutFull = new EnergyMomentumTensorMap(tOut);
-  EnergyMomentumTensorMap *Tmunu_OutBG   = new EnergyMomentumTensorMap(tOut);
+  EnergyMomentumTensorMap *Tmunu_OutFull = new EnergyMomentumTensorMap(tau);
+  EnergyMomentumTensorMap *Tmunu_OutBG   = new EnergyMomentumTensorMap(tau);
 
   // LOAD RESPONSE FUNCTIONS //
   KoMPoST::Setup() ;
@@ -96,5 +105,12 @@ int main(int argc, char **argv) {
   EnergyMomentumTensorMapSave(Tmunu_OutFull, tmp);
   tmp = std::string(OutputFileTag) + ".background.txt";
   EnergyMomentumTensorMapSave(Tmunu_OutBG, tmp);
+
+  delete Tmunu_OutFull;
+  delete Tmunu_OutBG;
+
+  }
+  
+
 
 }
