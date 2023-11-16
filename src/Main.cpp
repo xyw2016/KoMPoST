@@ -89,9 +89,6 @@ int main(int argc, char **argv) {
   use_pimunu_NS=true;
   write_initial_conditions_MUSIC(tmp, use_pimunu_NS, EventInput::afm, EventInput::afm, EventInput::Ns, EventInput::Ns, Tmunu_OutFull, Tmunu_OutBG);
 
-  tmp = std::string(OutputFileTag) + ".input_kompost";
-  use_pimunu_NS=true;
-  write_initial_conditions_MUSIC(tmp, use_pimunu_NS, EventInput::afm, EventInput::afm, EventInput::Ns, EventInput::Ns, Tmunu_In, Tmunu_OutBG);
 
   tmp = std::string(OutputFileTag) + ".input.txt";
   EnergyMomentumTensorMapSave(Tmunu_In, tmp);
