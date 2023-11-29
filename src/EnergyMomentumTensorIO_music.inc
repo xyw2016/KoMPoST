@@ -130,8 +130,9 @@ void EnergyMomentumTensorMapLoad(EnergyMomentumTensorMap *TIn, std::string fname
     // COMPONENTS OF ENERGY MOMENTUM TENSOR//
     double T00,TXX,TYY,TZZ,T0X,T0Y,T0Z,TXY,TYZ,TZX;
     
+    double sfactor0 =EventInput::normFactor;
     // CONVERT E [GeV/fm^3] TO  E [GeV^4] //
-    double ScaleFactor=(M_HBARC*M_HBARC*M_HBARC);
+    double ScaleFactor=(M_HBARC*M_HBARC*M_HBARC*sfactor0);
     
     int InputCount=0;
     bool printfirst=true; 
