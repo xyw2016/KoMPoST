@@ -17,7 +17,7 @@
 #include "INIReader.h"
 
 namespace EventInput {
-double normFactor = 1.0;
+//double normFactor = 1.0;
 double afm = 0.08;
 int Ns = 512;
 
@@ -29,7 +29,7 @@ int yEND = Ns - 1;
 
 void Setup(INIReader &reader) {
   afm = reader.GetReal("EventInput", "afm", afm);
-  normFactor = reader.GetReal("EventInput", "normFactor", normFactor);
+  //normFactor = reader.GetReal("EventInput", "normFactor", normFactor);
   Ns = reader.GetInteger("EventInput", "Ns", Ns);
 
   xSTART = reader.GetInteger("EventInput", "xSTART", xSTART);
@@ -39,7 +39,7 @@ void Setup(INIReader &reader) {
   yEND = reader.GetInteger("EventInput", "yEND", yEND);
 
   std::cerr << "** EventInput ** Initialized a grid layout:\n" 
-            << "  normFactor    = " << normFactor << "\n"
+  //          << "  normFactor    = " << normFactor << "\n"
             << "  afm    = " << afm << "\n"
             << "  Ns     = " << Ns << "\n"
             << "  xSTART = " << xSTART << "\n"
